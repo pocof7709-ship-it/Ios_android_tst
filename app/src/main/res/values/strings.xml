@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">iOS Experience AI</string>
+    <string name="today_title">Hoje</string>
+    <string name="notification_center_title">Central de Notificações</string>
+    <string name="settings_wallpaper">Papel de parede</string>
+    <string name="settings_use_system_wallpaper">Usar papel de parede do sistema</string>
+    <string name="settings_use_system_wallpaper_note">Com o do sistema, o vidro perde a cópia saturada do fundo e fica só translúcido.</string>
+    <string name="settings_fake_status_bar">Barra de status do app (experimental)</string>
+    <string name="settings_fake_status_bar_note">Esconde a barra do sistema e desenha uma própria. Deslize da borda superior para ver a do sistema. Sinal de operadora não é exibido (exigiria permissão de telefone).</string>
+</resources>

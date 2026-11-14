@@ -1,0 +1,33 @@
+name: Build APK
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configurar Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Configurar Gradle 8.9
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.9'
+      - name: Compilar APK debug
+        run: gradle --no-daemon :app:assembleDebug
+      - name: Testes unitários (não bloqueia o APK)
+        continue-on-error: true
+        run: gradle --no-daemon :core-data:testDebugUnitTest :core-design:testDebugUnitTest :feature-ai:testDebugUnitTest :app:testDebugUnitTest
+      - name: Salvar APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: IOSExperienceAI-v0.2-debug
+          path: app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+# teste

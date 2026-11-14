@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Cada permissão tem uma finalidade única e explicada na tela Configurações → Permissões. -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />        <!-- só LER o estado do Wi-Fi -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />      <!-- barra de status própria: só LER se há Wi-Fi/dados -->
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />            <!-- opcional: brilho e rotação (concedida pelo usuário) -->
+    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" /><!-- opcional: Não perturbe (concedida pelo usuário) -->
+    <uses-permission android:name="android.permission.READ_CALENDAR" />             <!-- opcional: próximo evento na tela de bloqueio -->
+
+    <queries>
+        <intent><action android:name="android.intent.action.MAIN"/><category android:name="android.intent.category.LAUNCHER"/></intent>
+        <intent><action android:name="android.intent.action.DIAL"/></intent>
+        <intent><action android:name="android.intent.action.SENDTO"/><data android:scheme="smsto"/></intent>
+        <intent><action android:name="android.intent.action.VIEW"/><data android:scheme="https"/></intent>
+        <intent><action android:name="android.media.action.STILL_IMAGE_CAMERA"/></intent>
+    </queries>
+
+    <application
+        android:name=".IOSApp"
+        android:label="iOS Experience AI"
+        android:allowBackup="false"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.IOSExperience">
+        <activity
+            android:name=".LauncherActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:stateNotNeeded="true"
+            android:excludeFromRecents="true"
+            android:resizeableActivity="false"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.HOME"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>
